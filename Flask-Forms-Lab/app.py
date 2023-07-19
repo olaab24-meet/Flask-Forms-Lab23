@@ -19,7 +19,7 @@ def login():
 		un=request.form['username']
 		pw=request.form['password']
 		if un==username and pw==password:
-			return redirect(url_for('home'))
+			return render_template('home.html')
 		else:
 			return render_template('login.html')
 	else:     	
