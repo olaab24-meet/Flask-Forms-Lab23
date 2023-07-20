@@ -19,7 +19,7 @@ def login():
 		un=request.form['username']
 		pw=request.form['password']
 		if un==username and pw==password:
-			return render_template('home.html')
+			return render_template('home.html',fbfriends=facebook_friends)
 		else:
 			return render_template('login.html')
 	else:     	
@@ -30,6 +30,15 @@ def login():
 def home():
 	return render_template('home.html')
 
+app.route('/friendexists/<string:name>')
+def home(name):
+	tt=False
+	for i in facebook_friends:
+		if i==name:
+			tt=True
+	if tt != True:
+			name=""
+	return render_template('friend_exists.html',friend=name)
 
 
 if __name__ == "__main__":  # Makes sure this is the main process
